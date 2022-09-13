@@ -1,0 +1,24 @@
+{
+  "name": "open-to-intern",
+  "version": "1.0.0",
+  "description": "project-2 open to intern",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pankajkandpal20/Open-To-Intern.git"
+  },
+  "author": "Akhilesh Patil, Pankaj Kandpal, Shailabh Srivastava, Alok Patle",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pankajkandpal20/Open-To-Intern/issues"
+  },
+  "homepage": "https://github.com/pankajkandpal20/Open-To-Intern#readme",
+  "dependencies": {
+    "express": "^4.18.1",
+    "mongoose": "^6.6.0",
+    "nodemon": "^2.0.19"
+  }
+}

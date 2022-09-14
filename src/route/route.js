@@ -5,6 +5,8 @@ const collegeController = require("../Controller/collegeController")
 
 router.post('/functionup/colleges',collegeController.createCollege)
 
+router.get("/functionup/collegeDetails", collegeController.getCollegeDetails)
+
 
 
 

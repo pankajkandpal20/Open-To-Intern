@@ -1,5 +1,5 @@
 const collegeModel = require("../Model/collegeModel")
-const {isString,isNotEmpty,isWrong,isValidCollege,isvalidLink}=require("../validators/validator")
+const {isString,isNotEmpty,isWrong,isValidCollege,isValidLink}=require("../validators/validator")
 const internModel= require("../Model/internModel")
 
 const createCollege = async function (req,res){
@@ -30,7 +30,7 @@ const createCollege = async function (req,res){
         if(!logoLink)return res.status(400).send({status: false,message: "Please provide logo link."})
         if(!isString(logoLink))return res.status(400).send({status: false,message: "logo link must be in string."})
         if(!isNotEmpty(logoLink))return res.status(400).send({status: false,message: "Please provide some data in logo link."})
-        if(!isvalidLink(logoLink))return res.status(400).send({status: false,message: "Please provide a correct link"})
+        if(!isValidLink(logoLink))return res.status(400).send({status: false,message: "Please provide a correct link"})
 
 
 

@@ -1,6 +1,6 @@
 const internModel = require('../Model/internModel')
 const collageModel = require('../Model/collegeModel')
-const {isString,isNotEmpty,isWrong,}=require("../validators/validator")
+const {isString,isNotEmpty}=require("../validators/validator")
 
 const createIntern = async function(req, res){
 try{

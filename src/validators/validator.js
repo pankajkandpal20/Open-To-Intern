@@ -12,7 +12,7 @@ const isNotEmpty = function (value) {
 
 
 const isWrong = function (value) {
-    if (value.match(/^[a-z]{2,10}$/i)) return true;
+    if (value.match(/^[a-z.]{2,10}$/i)) return true;
     return false;
 }
 
@@ -22,8 +22,8 @@ const isValidCollege=function(value){
     return false;
 }
 
-const isvalidLink=function(value){
+const isValidLink=function(value){
     if (value.match(/^(ht|f)tp(s?)\:\/\/[0-9a-zA-Z]([-.\w]*[0-9a-zA-Z])*(:(0-9)*)*(\/?)([a-zA-Z0-9\-\.\?\,\'\/\\\+&amp;%\$#_]*)?$/)) return true;
     return false;
 }
-module.exports={isString,isNotEmpty,isWrong, isValidCollege,isvalidLink}
+module.exports={isString,isNotEmpty,isWrong, isValidCollege,isValidLink}

@@ -5,10 +5,25 @@ const isString=function(value){
     return false
 }
 
-
-const isWrong = function (value) {
-    if (value.match(/^[A-Za-z]{2,10}+$/)) return true;
+const isNotEmpty = function (value) {
+    if (value.trim().length != 0) return true;
     return false;
 }
 
-module.exports={isString,isWrong}
+
+const isWrong = function (value) {
+    if (value.match(/^[a-z]{2,10}$/i)) return true;
+    return false;
+}
+
+const isValidCollege=function(value){
+    if (value.match(/([A-Z][^\s,.]+[.]?\s[(]?)*(College|University|Institute|Law School|School of|Academy)[^,\d]*(?=,|\d)/
+    )) return true;
+    return false;
+}
+
+const isvalidLink=function(value){
+    if (value.match(/^(ht|f)tp(s?)\:\/\/[0-9a-zA-Z]([-.\w]*[0-9a-zA-Z])*(:(0-9)*)*(\/?)([a-zA-Z0-9\-\.\?\,\'\/\\\+&amp;%\$#_]*)?$/)) return true;
+    return false;
+}
+module.exports={isString,isNotEmpty,isWrong, isValidCollege,isvalidLink}

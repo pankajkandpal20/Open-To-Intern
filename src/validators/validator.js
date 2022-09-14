@@ -17,7 +17,7 @@ const isWrong = function (value) {
 }
 
 const isValidCollege=function(value){
-    if (value.match(/([A-Z][^\s,.]+[.]?\s[(]?)*(College|University|Institute|Law School|School of|Academy)[^,\d]*(?=,|\d)/
+    if (value.match(/([A-Z][^\s,.]+[.]?\s[(]?)*[^,\d]*(?=,|\d)/
     )) return true;
     return false;
 }

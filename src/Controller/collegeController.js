@@ -17,8 +17,8 @@ const createCollege = async function (req,res){
         if(!isNotEmpty(name))return res.status(400).send({status: false,message: "Please provide some data in name."})
         if(!isWrong(name))return res.status(400).send({status: false,message: "Name must be in alphabets."})
 
-        const collegeAreadyExist = await collegeModel.findOne({ fullname: data.fullName })
-        if (collegeAreadyExist) return res.status(407).send({ msg: `college already Exists`, status: false })
+        const collegeAlreadyExist = await collegeModel.findOne({ name: name })
+        if (collegeAlreadyExist) return res.status(407).send({ msg: `college already Exists`, status: false })
 
         
 

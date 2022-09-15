@@ -59,10 +59,10 @@ const createIntern = async function (req, res) {
         if (!mobile)
             return res.status(400).send({ status: false, message: "Please provide mobile" });
 
-
+         mobile = mobile.toString().trim() 
         if ((!(/^[ 0-9 ]{10,10}$/).test(mobile)))
             return res.status(400).send({ status: false, msg: "Please provide valid number" });
-            mobile = mobile.toString().trim()
+            
 
         //Checking the number is already registered or not
         for (let i = 0; i < internsData.length; i++) {

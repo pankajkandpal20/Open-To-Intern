@@ -31,7 +31,7 @@ const createIntern = async function (req, res) {
 
         if (!isValidName(name))
             return res.status(400).send({ status: false, message: "Please provide a valid name" });
-        data.name = name.toLowerCase()
+        data.name = name.toLowerCase().trim()
 
 
         //Getting the old data form the intern dataBase
@@ -41,15 +41,15 @@ const createIntern = async function (req, res) {
         if (!email)
             return res.status(400).send({ status: false, message: "Please provide email" });
 
-        email = email.trim()
+        data.email = email.trim()
 
-        if (!(/^[a-z0-9_]{3,}@[a-z]{3,}[.]{1}[a-z]{3,6}$/).test(email)) {
+        if (!(/^[a-z0-9_]{3,}@[a-z]{3,}[.]{1}[a-z]{3,6}$/).test(data.email)) {
             return res.status(400).send({ status: false, msg: "Email is invalid" })
         }
 
         //Checking the email is already registered or not
         for (let i = 0; i < internsData.length; i++) {
-            if (internsData[i].email == email) {
+            if (internsData[i].email == data.email) {
                 return res.status(409).send({ status: false, msg: "email is alredy registered " });
             }
         }
@@ -59,8 +59,8 @@ const createIntern = async function (req, res) {
         if (!mobile)
             return res.status(400).send({ status: false, message: "Please provide mobile" });
 
-         mobile = mobile.toString().trim() 
-        if ((!(/^[ 0-9 ]{10,10}$/).test(mobile)))
+         data.mobile = mobile.toString().trim() 
+        if ((!(/^[ 0-9 ]{10,10}$/).test(data.mobile)))
             return res.status(400).send({ status: false, msg: "Please provide valid number" });
             
 
@@ -82,7 +82,7 @@ const createIntern = async function (req, res) {
         if (!isNotEmpty(collegeName))
             return res.status(400).send({ status: false, msg: "Collage Name is Empty" });
 
-        data.collegeName = collegeName.toLowerCase()
+        data.collegeName = collegeName.toLowerCase().trim()
 
 
         //Finding the college 

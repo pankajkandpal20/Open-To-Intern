@@ -1,7 +1,6 @@
 
-const isString=function(value){
-    if(typeof value==="string")
-    return true
+const isString = function (value) {
+    if (typeof value === "string") return true
     return false
 }
 
@@ -10,20 +9,24 @@ const isNotEmpty = function (value) {
     return false;
 }
 
-
 const isWrong = function (value) {
     if (value.match(/^[a-z.]{2,10}$/i)) return true;
     return false;
 }
 
-const isValidCollege=function(value){
-    if (value.match(/([A-Z][^\s,.]+[.]?\s[(]?)*[^,\d]*(?=,|\d)/
-    )) return true;
+const isValidName = function (value) {
+    if (value.match(/^[a-zA-Z ]+$/)) return true;
     return false;
 }
 
-const isValidLink=function(value){
+const isValidCollege = function (value) {
+    if (value.match(/^[a-zA-Z ,.]+$/)) return true;
+    return false;
+}
+
+const isValidLink = function (value) {
     if (value.match(/^(ht|f)tp(s?)\:\/\/[0-9a-zA-Z]([-.\w]*[0-9a-zA-Z])*(:(0-9)*)*(\/?)([a-zA-Z0-9\-\.\?\,\'\/\\\+&amp;%\$#_]*)?$/)) return true;
     return false;
 }
-module.exports={isString,isNotEmpty,isWrong, isValidCollege,isValidLink}
+
+module.exports = { isString, isNotEmpty, isWrong, isValidName, isValidCollege, isValidLink }

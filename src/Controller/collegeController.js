@@ -54,7 +54,7 @@ const getCollegeDetails = async function (req, res) {
             return res.status(400).send({ status: false, msg: "College Not Found" })
         }
         const internData = await internModel.find({ collegeId: saveData._id, isDeleted: false }).select({ name: 1, email: 1, mobile: 1 })
-        res.status(200).send({ status: true, data: { saveData, interns: internData } })
+        res.status(200).send({ status: true, data:  saveData, interns: internData  })
     } catch (err) {
         res.status(500).send({ msg: err.message, status: false })
     }

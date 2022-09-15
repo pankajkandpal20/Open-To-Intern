@@ -17,17 +17,22 @@ const createCollege = async function (req, res) {
         if (Object.keys(data).length == 0) return res.status(400).send({ status: false, message: "Please provide some data." })
         let { name, fullName, logoLink } = data
 
+        const collageData= await collegeModel.find()
+        
         //Validation for name
         if (!name) return res.status(400).send({ status: false, message: "Please provide name." })
         if (!isString(name)) return res.status(400).send({ status: false, message: "Name must be in string." })
         data.name=name.trim()
         if (!isNotEmpty(data.name)) return res.status(400).send({ status: false, message: "Please provide some data in name." })
-        if (!isWrong(data.name)) return res.status(400).send({ status: false, message: "Name must be in alphabets." })
+        if (!isWrong(data.name)) return res.status(400).send({ status: false, message: "Please provide valid name" })
         data.name = data.name.toLowerCase()
 
         //Checking the unique name
-        const collegeAlreadyExist = await collegeModel.findOne({ name: name })
-        if (collegeAlreadyExist) return res.status(409).send({  status: false, msg: "college already Exists" })
+        for (let i = 0; i < collageData.length; i++) {
+            if (collageData[i].name  == data.name ) {
+                return res.status(409).send({ status: false, msg: "college name already Exists" });
+            }
+        }
 
         //Validation for fullName
         if (!fullName) return res.status(400).send({ status: false, message: "Please provide fullName." })

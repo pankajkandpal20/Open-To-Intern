@@ -66,7 +66,7 @@ const createIntern = async function (req, res) {
 
         //Checking the number is already registered or not
         for (let i = 0; i < internsData.length; i++) {
-            if (internsData[i].mobile == mobile) {
+            if (internsData[i].mobile == data.mobile) {
                 return res.status(409).send({ status: false, msg: "number is already registered" });
             }
         }

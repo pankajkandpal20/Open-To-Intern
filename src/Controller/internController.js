@@ -43,7 +43,7 @@ const createIntern = async function (req, res) {
 
         data.email = email.trim()
 
-        if (!(/^[a-z0-9_]{3,}@[a-z]{3,}[.]{1}[a-z]{3,6}$/).test(data.email)) {
+        if (!(/^[A-Za-z0-9_]{3,}@[a-z]{3,}[.]{1}[a-z]{3,6}$/).test(data.email)) {
             return res.status(400).send({ status: false, msg: "Email is invalid" })
         }
 

@@ -10,5 +10,10 @@ router.post('/functionup/interns', createIntern);
 
 router.get("/functionup/collegeDetails", getCollegeDetails)
 
+router.all("/*", function (req, res) {
+    res.status(400).send({ status: false, message: "invalid http request" });
+  });
+
+
 
 module.exports=router; 

@@ -33,44 +33,29 @@ const createIntern = async function (req, res) {
             return res.status(400).send({ status: false, message: "Please provide a valid name" });
         data.name = name.toLowerCase().trim()
 
-
-        //Getting the old data form the intern dataBase
-        let internsData = await internModel.find()
-
         //Validating intern email
         if (!email)
             return res.status(400).send({ status: false, message: "Please provide email" });
 
-        data.email = email.trim()
-
         if (!(/^[A-Za-z0-9_]{3,}@[a-z]{3,}[.]{1}[a-z]{3,6}$/).test(data.email)) {
             return res.status(400).send({ status: false, msg: "Email is invalid" })
         }
+        data.email = email.trim()
+        let internsEmail = await internModel.findOne({ email: data.email })
 
-        //Checking the email is already registered or not
-        for (let i = 0; i < internsData.length; i++) {
-            if (internsData[i].email == data.email) {
-                return res.status(409).send({ status: false, msg: "email is alredy registered " });
-            }
-        }
+        if (internsEmail) return res.status(409).send({ status: false, msg: "email is already registered" });
 
 
         //Validating intern mobile
         if (!mobile)
             return res.status(400).send({ status: false, message: "Please provide mobile" });
 
-         data.mobile = mobile.toString().trim() 
+        data.mobile = mobile.toString().trim()
         if ((!(/^[ 0-9 ]{10,10}$/).test(data.mobile)))
             return res.status(400).send({ status: false, msg: "Please provide valid number" });
-            
+        let internsMobile = await internModel.findOne({ mobile: data.mobile })
 
-        //Checking the number is already registered or not
-        for (let i = 0; i < internsData.length; i++) {
-            if (internsData[i].mobile == data.mobile) {
-                return res.status(409).send({ status: false, msg: "number is already registered" });
-            }
-        }
-
+        if (internsMobile) return res.status(409).send({ status: false, msg: "mobile is already registered" });
 
         //Validating collegeName
         if (!collegeName)
@@ -105,4 +90,4 @@ const createIntern = async function (req, res) {
     }
 }
 
-module.exports= {createIntern}
+module.exports = { createIntern }
